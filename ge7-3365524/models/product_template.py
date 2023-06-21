@@ -1,5 +1,5 @@
 from odoo import api, fields, models, exceptions
-
+from datetime import datetime
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -21,8 +21,15 @@ class ProductTemplate(models.Model):
             # check if product is a motorcycle
 
             # TODO: need to add handling for cases where make, model and year are empty
+            if not record.year:
+                record.year = int(datetime.now().year)
+            if not record.make:
+                record.make = "<placeholder>"
+            if not record.model:
+                record.model = "<placeholder>"
+
             if record.detailed_type == 'motorcycle':
-                record.name = f'{record.year}{record.make}{record.model}'
+                record.name = f'{record.year}-{record.make}-{record.model}'
             else:
                 record.name = record.name
 
