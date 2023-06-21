@@ -1,1 +1,1 @@
-from . import aname
+from . import stock_lot
