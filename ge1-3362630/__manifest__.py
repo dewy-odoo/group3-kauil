@@ -13,7 +13,7 @@
     
     "license": "OPL-1",
     
-    "depends": ["stock", "motorcycle_registry"],
+    "depends": ["motorcycle_registry"],
     
     "data": [
     ],
