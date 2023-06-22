@@ -16,7 +16,8 @@
     "depends": ["motorcycle_registry"],
     
     "data": [
-        'views/stock_lot_inherit_tree.xml'
+        'views/stock_lot_inherit_tree.xml',
+        'views/motorcycle_registry_inherit.xml'
     ],
     
     "demo": [
