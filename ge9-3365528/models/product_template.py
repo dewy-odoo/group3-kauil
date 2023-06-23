@@ -12,7 +12,7 @@ class ProductTemplate(models.Model):
     def _calc_detailed_type(self):
          for s in self:     
             if s.detailed_type == "motorcycle":
-                s.categ_id = s.env.ref('ge9-3363106.moto_category')
+                s.categ_id = s.env.ref('ge9-3365528.moto_category')
                 return
             elif s.categ_id != self.env.ref('product.product_category_all'):
                 s.categ_id =  s.categ_id

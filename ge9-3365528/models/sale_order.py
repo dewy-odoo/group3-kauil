@@ -24,18 +24,18 @@ class SaleOrder(models.Model):
             for order_line in sale_order.order_line:
                 if order_line.product_template_id and order_line.product_template_id.detailed_type == 'motorcycle':
                     self.is_new_customer = False
-                    self.env.ref('ge9-3363106.new_customer_coupon').active = False
-                    self.pricelist_id = self.env.ref('ge9-3363106.no_coupon')
+                    self.env.ref('ge9-3365528.new_customer_coupon').active = False
+                    self.pricelist_id = self.env.ref('ge9-3365528.no_coupon')
                     super()._recompute_prices()
                     return
         # check res partner
         self.is_new_customer = True
-        self.env.ref('ge9-3363106.new_customer_coupon').active = True
+        self.env.ref('ge9-3365528.new_customer_coupon').active = True
 
         
     @api.depends("pricelist_id")
     def action_apply_discount(self):
-        self.pricelist_id = self.env.ref('ge9-3363106.new_customer_coupon')
+        self.pricelist_id = self.env.ref('ge9-3365528.new_customer_coupon')
         super().action_update_prices()
         return True
     
