@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="moto_category" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Motorcycle Category</field>    
+        </record>
+
+
+        <!-- Price list -->
+        <record id="no_coupon" model="product.pricelist">
+            <field name="name">List Price</field>
+            <field name="sequence">1</field>
+        </record>        
+        <record id="new_customer_coupon" model="product.pricelist">
+            <field name="name">New Customer Coupon</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="discount_rule" model="product.pricelist.item">
+            <field name="pricelist_id" ref = "new_customer_coupon"/>
+            <field name="applied_on">2_product_category</field>
+            <field name = "categ_id" ref = "moto_category"/>
+            <field name="base">list_price</field>
+            <field name="compute_price">formula</field>
+            <field name="price_surcharge">-2500</field>
+            
+        </record>
+
+        <record id="list_rule" model="product.pricelist.item">
+            <field name="pricelist_id" ref = "no_coupon"/>
+            <field name="applied_on">3_global</field>
+            <field name="base">list_price</field>
+            <field name="compute_price">formula</field>
+            
+        </record>        
+
+    </data>
+</odoo>
