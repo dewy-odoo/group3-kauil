@@ -12,7 +12,7 @@ class StockPicking(models.Model):
                     self.env['motorcycle.registry'].create({
                         "lot_id": el.lot_id,
                         "vin": el.lot_id.name,
-                        "sale_order": self.origin
+                        "sale_order": self.origin,
                     })
 
         return res
