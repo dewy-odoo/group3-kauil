@@ -4,7 +4,8 @@ class MotorcycleRegistry(models.Model):
     _inherit = 'motorcycle.registry'
 
     lot_id = fields.One2many('stock.lot', 'registry_id', string="Lot ID")
-
+    sale_order = fields.Char()
+    # owner_id = fields.Many2one(comodel_name='stock.picking', ondelete='restrict')
 
     # constrain to enforce one2one relation on lot_id
     @api.constrains('lot_id')

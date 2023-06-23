@@ -8,6 +8,7 @@
         <field name='arch' type='xml'>
             <field name='vin' position='after'>
                 <field name='lot_id'/>
+                <field name='sale_order'/>
             </field>
         </field>
     </record>
