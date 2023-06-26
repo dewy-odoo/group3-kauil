@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_menu_motorcycle_registry" name="Portal layout : motorcycle registry menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'motorcycle_registry' or motorcycle_registry" t-attf-class="breadcrumb-item #{'active ' if not motorcycle_registry else ''}">
+                <a t-if="motorcycle_registry" t-attf-href="/my/registry?{{ keep_query() }}">Motorcycle Registry</a>
+                <t t-else="">Motorcycle Registry</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_motorcycle_registry" name="Show Motorcycle Registry Details" customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Motorcycle Registry</t>
+                <t t-set="url" t-value="'/my/registry'"/>
+                <t t-set="placeholder_count" t-value="'motorcycle_registry_count'"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>
