@@ -13,6 +13,7 @@ class StockPicking(models.Model):
                         "lot_id": el.lot_id,
                         "vin": el.lot_id.name,
                         "sale_order": self.origin,
+                        "owner_id": self.partner_id.id
                     })
 
         return res
