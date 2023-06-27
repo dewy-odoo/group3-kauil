@@ -18,6 +18,7 @@ K'awiil Motors needs to manage repairs from within Odoo. The repairs app meets m
     "depends": ["motorcycle_registry", "repair"],
     
     "data": [
+        'views/repair_order_form_inherit.xml'
     ],
     
     "demo": [
