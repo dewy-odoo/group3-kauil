@@ -1,5 +1,17 @@
 from odoo.addons.portal.controllers import portal
 from odoo.http import request
+import binascii
+
+from odoo import fields, http, SUPERUSER_ID, _
+from odoo.exceptions import AccessError, MissingError, ValidationError
+from odoo.fields import Command
+from odoo.http import request
+
+from odoo.addons.payment.controllers import portal as payment_portal
+from odoo.addons.payment import utils as payment_utils
+from odoo.addons.portal.controllers.mail import _message_post_helper
+from odoo.addons.portal.controllers import portal
+from odoo.addons.portal.controllers.portal import pager as portal_pager
 
 class CustomerPortal(portal.CustomerPortal):
 
@@ -19,3 +31,29 @@ class CustomerPortal(portal.CustomerPortal):
             ('owner_id', '=', partner.id),
             ('public', '=', True)
         ]
+    
+    def _prepare_moto_portal_rendering_values(
+        self, page=1, reg_number=None, vin=None, lot_id=None, brand=None,make = None,model = None,plate_number = None, owner = None, **kwargs
+    ):
+        records = request.env['motorcycle.registry']
+
+        partner = request.env.user.partner_id
+        values = {}
+
+        
+        domain = [('owner_id', '=', partner.id)]
+
+        userRecords = records.search(domain)
+
+        values.update({
+            "userRecords" : userRecords
+        })
+
+        return values
+
+
+    @http.route(['/my/registry'], type='http', auth="user", website=True)
+    def portal_my_orders(self, **kwargs):
+        values = self._prepare_moto_portal_rendering_values( **kwargs)
+        #request.session['my_orders_history'] = values['orders'].ids[:100]
+        return request.render("ge3-3362634.portal_moto_reg_list", values)

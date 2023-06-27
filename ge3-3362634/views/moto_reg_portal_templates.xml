@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <odoo>
+    <template id="portal_moto_reg_list" name="Motorcycle Registry Records">
+        <t t-call="portal.portal_layout">
+
+            <t t-if="userRecords" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>
+                            <span class='d-none d-md-inline'>Registry Number</span>
+                            <span class='d-block d-md-none'>Ref.</span>
+                        </th>
+                        <th class="text-end">VIN</th>
+                        <th class="text-end">Lot ID</th>
+                        <th class="text-end">Brand</th>
+                        <th class="text-end">Make</th>
+                        <th class="text-end">Model</th>
+                        <th class="text-end">License Plate Number</th>
+                        <th class="text-end">Owner</th>
+
+                        
+                    </tr>
+                </thead>
+                <t t-foreach="userRecords" t-as="record">
+                    <tr>
+                        <td><t t-out="record.registry_number"/></td>
+                        <td class="text-end"><span t-if="record.vin" t-field="record.vin"/></td>
+                        <td class="text-end"><span t-if="record.lot_id" t-field="record.lot_id"/></td>
+                        <td class="text-end"><span t-if="record.brand" t-field="record.brand"/></td>
+                        <td class="text-end"><span t-if="record.make" t-field="record.make"/></td>
+                        <td class="text-end"><span t-if="record.model" t-field="record.model"/></td>
+                        <td class="text-end"><span t-if="record.license_plate" t-field="record.license_plate"/></td>
+                        <td class="text-end"><span t-if="record.owner_id" t-field="record.owner_id.name"/></td>
+                    </tr>
+                </t>
+
+            </t>
+            <p t-else="">There are currently no orders for your account.</p>
+        </t>
+    </template>
+
+    </odoo>

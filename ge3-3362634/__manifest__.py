@@ -16,7 +16,8 @@
     "depends": ["motorcycle_registry"],
     
     "data": [
-        'views/motorcycle_registry_portal_view_template.xml'
+        'views/motorcycle_registry_portal_view_template.xml',
+        'views/moto_reg_portal_templates.xml'
     ],
     
     "demo": [
