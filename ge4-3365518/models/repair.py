@@ -71,3 +71,4 @@ class Repair(models.Model):
                 record.product_id = sale_order_id.product_id
                 return
         record.product_id = False
+

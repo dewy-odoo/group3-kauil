@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<odoo>
+    <record id='motorcycle_registry_view_form' model='ir.ui.view'>
+        <field name='name'>motorcycle.registry.form.inherit</field>
+        <field name='model'>motorcycle.registry</field>
+        <field name='inherit_id' ref='motorcycle_registry.motorcycle_registry_view_form' />
+        <field name='arch' type='xml'>
+            <xpath expr='page[@string='Registry View'></xpath>
+        </field>
+    </record>
+
+</odoo>
