@@ -9,10 +9,10 @@ class SaleOrder(models.Model):
     @api.onchange('partner_id')
     def _compute_closest(self):
         for record in self:
-            wID = 4
+            wID = 3
             caDeliveries = ['CA', 'NV', 'OR', 'ID', 'UT', 'AZ']
             if self.partner_id.state_id.code in caDeliveries:
-                wID = 1
+                wID = 4
             warehouse = self.env['stock.warehouse'].search_read([('id', '=', wID)])
             if len(warehouse) == 1:
                 record.warehouse_id = warehouse[0]
