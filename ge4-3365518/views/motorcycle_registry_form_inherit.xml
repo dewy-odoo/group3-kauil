@@ -7,7 +7,11 @@
         <field name='model'>motorcycle.registry</field>
         <field name='inherit_id' ref='motorcycle_registry.motorcycle_registry_view_form' />
         <field name='arch' type='xml'>
-            <xpath expr='page[@string='Registry View'></xpath>
+            <xpath expr="//sheet" position='inside'>
+                <div class="oe_button_box" name="button_box" >
+                    <button type='object' name='action_display_repairs' string='Repairs' class="oe_stat_button"/>
+                </div>
+            </xpath>
         </field>
     </record>
 
