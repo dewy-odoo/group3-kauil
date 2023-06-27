@@ -16,6 +16,6 @@ class CustomerPortal(portal.CustomerPortal):
     
     def _prepare_motorcycle_registry_domain(self, partner):
         return ['|',
-            ('owner_id', '=', [partner]),
+            ('owner_id', '=', partner.id),
             ('public', '=', True)
         ]

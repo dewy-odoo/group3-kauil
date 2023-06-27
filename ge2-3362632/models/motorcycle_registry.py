@@ -5,9 +5,6 @@ class MotorcycleRegistry(models.Model):
 
     lot_id = fields.One2many('stock.lot', 'registry_id', string="Lot ID")
     sale_order = fields.Char()
-    owner_id = fields.Many2one('res.partner')
-    owner_phone = fields.Char(related='owner_id.phone')
-    owner_email = fields.Char(related='owner_id.email')
 
     # constrain to enforce one2one relation on lot_id
     @api.constrains('lot_id')
