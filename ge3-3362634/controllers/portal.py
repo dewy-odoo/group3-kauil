@@ -67,7 +67,6 @@ class CustomerPortal(portal.CustomerPortal):
     
     @http.route(['/my/registry/<int:registry_number>'], type='http', auth="user", website=True)
     def portal_motorcycle_registry(self, registry_number, access_token=None, **kw):
-        print(registry_number)
         try:
             registry_sudo = self._document_check_access('motorcycle.registry', registry_number, access_token)
         except (AccessError, MissingError):
@@ -89,3 +88,23 @@ class CustomerPortal(portal.CustomerPortal):
         values = self._get_page_view_values(registry_sudo, access_token, values, history, False, **kwargs)
 
         return values
+    
+    @http.route('/my/registry/form/motorcycle_registry', methods=['POST'], type='http', auth="user")
+    def submit_form(self, id, access_token=None, **kwargs):
+        try:
+            registry_sudo = self._document_check_access('motorcycle.registry', int(id))
+        except (AccessError, MissingError):
+            return request.redirect('/my')
+        
+        registry_sudo.update({
+            "vin": kwargs.get('vin'),
+            "brand": kwargs.get('brand', None),
+            "make": kwargs.get('make', None),
+            "model": kwargs.get('model', None),
+            "current_mileage": kwargs.get('current_mileage', None),
+            "license_plate": kwargs.get('license_plate', None),
+            "registry_date": kwargs.get('registry_date', None)
+        })
+
+        values = self._task_get_page_view_values(registry_sudo, access_token=access_token, **kwargs)
+        return request.render("ge3-3362634.portal_my_motorcycle", values)
