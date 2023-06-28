@@ -34,16 +34,109 @@
                         <div id="card_header" class="card-header bg-white" data-anchor="true">
                             <div class="row g-0">
                                 <div class="col-12">
-                                    <h5 class="d-flex mb-1 mb-md-0 row">
-                                        <div class="col-9">
+                                    <h3 class="d-flex mb-1 mb-md-0 row">
                                             <span t-field="registry.registry_number" class="text-truncate"/>
-                                        </div>
-                                    </h5>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div id="card_body" class="card-body">
-                            <div class="row mb-4 container">
+                            <section class="s_website_form pt16 pb16" data-snippet="s_website_form" data-name="Form">
+                                <div class="container">
+                                    <form action="form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-pre-fill="true"
+                                    contenteditable="false" data-model_name="motorcycle_registry" data-success-mode="message">
+                                        <div class="s_website_form_end_message d-none">
+                                            <div class="oe_structure">
+                                                <section class="s_text_block pt64 pb64" data-snippet="s_text_block">
+                                                    <div class="container">
+                                                            <h2 class="text-center">This is a success!</h2>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                        <div class="s_website_form_rows row s_col_no_bgcolor">
+                                            <input type="hidden" class="form-control s_website_form_input" name="id" required="1" t-att-value="registry.id" id="olt6zpqe8mlj"/>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">VIN</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="vin" required="1" t-att-value="registry.vin" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Brand</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="brand" t-att-value="registry.brand" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Make</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="make" t-att-value="registry.make" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Model</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="model" t-att-value="registry.model" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Current Mileage</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="current_mileage" t-att-value="registry.current_mileage" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">License Plate</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="license_plate" t-att-value="registry.license_plate" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="s_website_form_field mb-3 col-12 s_website_form_custom " data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Registry Date</span>
+                                                    </label>
+                                                    <div class="col-sm">    
+                                                    <input type="text" class="form-control s_website_form_input" name="registry_date" t-att-value="registry.registry_date" id="olt6zpqe8mlj"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button">
+                                                <div style="width: 200px;" class="s_website_form_label"></div>
+                                                <a href="#" role="button" class="btn btn-primary btn-lg s_website_form_send o_default_snippet_text" contenteditable="true">Save</a>
+                                                <span id="s_website_form_result"></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+                            <!-- <div class="row mb-4 container">
                                 <div class="col-12 col-md-6">
                                     <div><strong>VIN: </strong><span t-field="registry.vin"/></div>
                                     <div><strong>Brand: </strong><span t-field="registry.brand"/></div>
@@ -57,7 +150,7 @@
                                     <div><strong>Owner Phone: </strong><span t-field="registry.owner_phone"/></div>
                                     <div><strong>Owner Email: </strong><span t-field="registry.owner_email"/></div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
