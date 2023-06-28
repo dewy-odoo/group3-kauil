@@ -53,7 +53,32 @@ class CustomerPortal(portal.CustomerPortal):
 
 
     @http.route(['/my/registry'], type='http', auth="user", website=True)
-    def portal_my_orders(self, **kwargs):
+    def portal_my_registry(self, **kwargs):
         values = self._prepare_moto_portal_rendering_values( **kwargs)
         #request.session['my_orders_history'] = values['orders'].ids[:100]
         return request.render("ge3-3362634.portal_moto_reg_list", values)
+    
+    @http.route(['/my/registry/<int:registry_number>'], type='http', auth="user", website=True)
+    def portal_motorcycle_registry(self, registry_number, access_token=None, **kw):
+        print(registry_number)
+        try:
+            registry_sudo = self._document_check_access('motorcycle.registry', registry_number, access_token)
+        except (AccessError, MissingError):
+            return request.redirect('/my')
+
+        values = self._task_get_page_view_values(registry_sudo, access_token, **kw)
+        return request.render("ge3-3362634.portal_my_motorcycle", values)
+    
+    def _task_get_page_view_values(self, registry_sudo, access_token, **kwargs):
+        values = {
+            'page_name': 'Motorcycle Registry',
+            'registry': registry_sudo,
+            'user': request.env.user,
+            'project_accessible': True,
+            'task_link_section': [],
+        }
+        history = 'my_registry_history'
+
+        values = self._get_page_view_values(registry_sudo, access_token, values, history, False, **kwargs)
+
+        return values

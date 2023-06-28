@@ -24,7 +24,7 @@
                 </thead>
                 <t t-foreach="userRecords" t-as="record">
                     <tr>
-                        <td><t t-out="record.registry_number"/></td>
+                        <td><a t-att-href="record.get_portal_url()"><t t-out="record.registry_number"/></a></td>
                         <td class="text-end"><span t-if="record.vin" t-field="record.vin"/></td>
                         <td class="text-end"><span t-if="record.lot_id" t-field="record.lot_id"/></td>
                         <td class="text-end"><span t-if="record.brand" t-field="record.brand"/></td>
