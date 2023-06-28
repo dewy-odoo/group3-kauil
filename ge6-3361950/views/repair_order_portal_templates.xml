@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<odoo>
+    <template id='repair_order_list' name='Repair Order Records'>
+        <t t-call='portal.portal_layout'>
+        
+
+
+            <t t-if="userRecords" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th class="text-end">Repair Reference</th>
+                        <th class="text-end">Prodcut To Repair</th>
+                        <th class="text-end">Customer</th>
+
+                        
+                    </tr>
+                </thead>
+                <t t-foreach="userRecords" t-as="record">
+                    <tr>
+                        <td><a t-att-href="record.get_portal_url()"><t t-out="record.name"/></a></td>
+                        <td class="text-end"><span t-if="record.product_id" t-field="record.product_id"/></td>
+                        <td class="text-end"><span t-if="record.partner_id" t-field="record.partner_id"/></td>
+                    </tr>
+                </t>
+
+            </t>
+            <p t-else="">There are currently no orders for your account.</p>
+
+
+        </t>
+    </template>
+</odoo>

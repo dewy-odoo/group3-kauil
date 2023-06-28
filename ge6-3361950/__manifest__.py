@@ -16,6 +16,8 @@
     "depends": ["motorcycle_registry", "ge4-3365518"],
     
     "data": [
+        'views/repair_order_portal_templates.xml',
+        'views/repair_order_portal_view_template.xml'
     ],
     
     "demo": [

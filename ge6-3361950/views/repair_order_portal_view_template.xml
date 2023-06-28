@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <template id="portal_my_home_menu_repair_order" name="Portal layout : repair order menu
+    entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'repair_order' or repair_order" t-attf-class="breadcrumb-item #{'active ' if
+    not repair_order else ''}">
+                <a t-if="repair_order" t-attf-href="/my/registry?{{ keep_query() }}">Repair Order</a>
+                <t t-else="">Repair Order</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_repair_order" name="Show Repair Order Details" customize_show="True"
+    inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Repair Order</t>
+                <t t-set="url" t-value="'/my/registry'"/>
+                <t t-set="placeholder_count" t-value="'repair_order_count'"/>
+            </t>
+        </xpath>
+    </template> -->
+
+    <template id="portal_my_repair" name="My Motorcycle Repair" inherit_id="portal.portal_sidebar"
+        primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_project_portal_sidebar">
+                <div id="registry_content" class="col-lg-9 justify-content-end">
+                    <div id="card" class="card">
+                        <div id="card_header" class="card-header bg-white" data-anchor="true">
+                            <div class="row g-0">
+                                <div class="col-12">
+                                    <h3 class="d-flex mb-1 mb-md-0 row">
+                                        <span t-field="repair.name"
+                                            class="text-truncate" />
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="card_body" class="card-body">
+                            <section class="s_website_form pt16 pb16" data-snippet="s_website_form"
+                                data-name="Form">
+                                <div class="container">
+                                    <form action="form/" method="post" enctype="multipart/form-data"
+                                        class="o_mark_required" data-mark="*" data-pre-fill="true"
+                                        contenteditable="false"
+                                        data-model_name="repair"
+                                        data-success-mode="message">
+                                        <div class="s_website_form_end_message d-none">
+                                            <div class="oe_structure">
+                                                <section class="s_text_block pt64 pb64"
+                                                    data-snippet="s_text_block">
+                                                    <div class="container">
+                                                        <h2 class="text-center">This is a success!</h2>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                        <div class="s_website_form_rows row s_col_no_bgcolor">
+                                            <input type="hidden"
+                                                class="form-control s_website_form_input" name="id"
+                                                required="1" t-att-value="repair.id"
+                                                id="olt6zpqe8mlj" />
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">
+                                                            Registry Number</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="registry-name" required="1"
+                                                            t-att-value="repair.registry_id"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">
+                                                            VIN</span>
+                                                        <span class="s_website_form_mark"> *</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="vin" required="1"
+                                                            t-att-value="repair.vin"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">
+                                                            Current Mileage</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="current-mileage"
+                                                            t-att-value="repair.mileage"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">
+                                                            Prodcut To Repair</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="product-id" t-att-value="repair.product_id"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">
+                                                            Lot/Serial</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="lot_id"
+                                                            t-att-value="repair.lot_id"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="s_website_form_field mb-3 col-12 s_website_form_custom "
+                                                data-type="char" data-name="Field">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label
+                                                        class="col-form-label col-sm-auto s_website_form_label "
+                                                        style="width: 200px" for="olt6zpqe8mlj">
+                                                        <span class="s_website_form_label_content">Customer</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text"
+                                                            class="form-control s_website_form_input"
+                                                            name="partner_id"
+                                                            t-att-value="repair.partner_id"
+                                                            id="olt6zpqe8mlj" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-0 py-2 col-12 s_website_form_submit"
+                                                data-name="Submit Button">
+                                                <div style="width: 200px;"
+                                                    class="s_website_form_label"></div>
+                                                <a href="#" role="button"
+                                                    class="btn btn-primary btn-lg s_website_form_send o_default_snippet_text"
+                                                    contenteditable="true">Save</a>
+                                                <span id="s_website_form_result"></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
