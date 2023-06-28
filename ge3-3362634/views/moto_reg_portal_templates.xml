@@ -3,6 +3,8 @@
     <odoo>
     <template id="portal_moto_reg_list" name="Motorcycle Registry Records">
         <t t-call="portal.portal_layout">
+         <t t-call="website.website_search_box_input">
+         </t>
 
             <t t-if="userRecords" t-call="portal.portal_table">
                 <thead>

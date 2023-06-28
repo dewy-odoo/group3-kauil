@@ -39,11 +39,18 @@ class CustomerPortal(portal.CustomerPortal):
 
         partner = request.env.user.partner_id
         values = {}
-
+        
+        if kwargs.get('search'):
+            param = kwargs.get('search')
+            #print(param)
+            domain = ['|',('owner_id', '=', partner.id),('public','=', "True"),'|',('owner_id.country_id.name', '=', param),'|',('owner_id.state_id.name', '=', param),'|',('model', 'ilike', param),'|',('make', 'ilike', param), ('brand', 'ilike', param)]
+            userRecords = records.search(domain).sudo()
+            values.update({"userRecords" : userRecords})
+            return values
         
         domain = [('owner_id', '=', partner.id)]
 
-        userRecords = records.search(domain)
+        userRecords = records.search(domain).sudo()
 
         values.update({
             "userRecords" : userRecords
@@ -54,7 +61,7 @@ class CustomerPortal(portal.CustomerPortal):
 
     @http.route(['/my/registry'], type='http', auth="user", website=True)
     def portal_my_registry(self, **kwargs):
-        values = self._prepare_moto_portal_rendering_values( **kwargs)
+        values = self._prepare_moto_portal_rendering_values(  **kwargs)
         #request.session['my_orders_history'] = values['orders'].ids[:100]
         return request.render("ge3-3362634.portal_moto_reg_list", values)
     
